@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-8 align-self-center">
+      <input
+        type="text"
+        name="todoText"
+        class="form-control"
+        [(ngModel)]="todoText"
+        (keyup.enter)="onAddTodoText()"
+      />
+    </div>
+    <div class="col-2">
+      <button
+        class="btn btn-sm btn-primary btn-block"
+        (click)="onAddTodoText()"
+      >
+        Add
+      </button>
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col">
+      <div *ngIf="todoList.length === 0">
+        <p>List is empty!</p>
+      </div>
+      <div class="list-group" *ngIf="todoList.length > 0">
+        <div
+          class="list-group-item list-group-item-action"
+          *ngFor="let todo of todoList"
+        >
+          <div class="d-flex w-100 justify-content-right">
+            <div class="row" style="width: 100%;">
+                <div class="col-lg-10 col-mb-10 col-sm-10 col-xs-10">
+            <h5 class="mb-1" [ngClass]="todo.isCompleted ? 'strike' : ''">
+              {{ todo.text }}
+            </h5>
+        </div>
+                <div class="col-lg-2 col-mb-2 col-sm-2 col-xs-2 justify-content-right">
+            <button
+              class="btn btn-sm btn-primary"
+              (click)="onCompletingTask(todo)"
+            >
+              {{ todo.buttonText }}
+            </button>
+            <button
+              class="btn btn-sm btn-primary"
+              style="margin-left: 5px;"
+              (click)="onDeleteTask(todo)"
+            >
+              Delete
+            </button>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

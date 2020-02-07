@@ -39,7 +39,7 @@ export class TodoComponent implements OnInit {
     if (this.todoList[todoId].isCompleted){
       this.todoList[todoId].isCompleted = false;
       this.todoList[todoId].buttonText = "Done";
-    }else{
+    } else{
       this.todoList[todoId].isCompleted = true;
       this.todoList[todoId].buttonText = "Undone";
     }
